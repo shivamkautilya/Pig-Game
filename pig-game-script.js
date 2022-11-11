@@ -37,7 +37,7 @@ const rollDice = function () {
     // console.log(diceNumber);
     //2.Display Dice Image in center
     diceClassEl.classList.remove("hidden");
-    diceClassEl.src = `images/dice-${diceNumber}.png`;
+    diceClassEl.src = `pig-game-img/dice-${diceNumber}.png`;
     //3. Show and add current score if dice != 1
     //4. If score is below 100 then let it work
 
