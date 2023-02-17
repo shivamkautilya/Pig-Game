@@ -1,10 +1,8 @@
-"use strict";
-
 //variable/constant declarations
-const score0El = document.getElementById("score--0");
-const score1El = document.getElementById("score--1");
-const currentScore0El = document.getElementById("current--0");
-const currentScore1El = document.getElementById("current--1");
+const s0 = document.getElementById("score--0");
+const s1 = document.getElementById("score--1");
+const cs1 = document.getElementById("current--0");
+const cs2 = document.getElementById("current--1");
 const diceClassEl = document.querySelector(".dice");
 const btnNew = document.querySelector(".btn--new");
 const btnRoll = document.querySelector(".btn--roll");
@@ -43,22 +41,24 @@ const rollDice = function () {
 
     if (diceNumber != 1) {
       currentScore += diceNumber;
-      // currentScore0El.textContent = currentScore;
+      // cs1.textContent = currentScore;
       document.getElementById(`current--${activePlayer}`).textContent =
         currentScore;
     } else {
       switchPlayer();
     }
   } else {
-    declareWinner();
+    winner();
   }
 };
-function declareWinner() {
+//function to declare winner
+function winner() {
   console.log("Game Has Ended.");
   console.log(`Player ${activePlayer + 1} is winner.`);
   diceClassEl.classList.add("hidden");
   alert(`Player ${activePlayer + 1} is winner.`);
 }
+
 const btnHoldFunction = function () {
   // console.log("Hold button clicked");
   //1 Store currentscore into respected Player Score
@@ -72,7 +72,7 @@ const btnHoldFunction = function () {
         document
           .querySelector(".player--0")
           .classList.add("player--winner", "name");
-        declareWinner();
+        winner();
       } else {
         document.getElementById(`score--${activePlayer}`).textContent =
           scores[0];
@@ -85,7 +85,7 @@ const btnHoldFunction = function () {
         document
           .querySelector(".player--1")
           .classList.add("player--winner", "name");
-        declareWinner();
+        winner();
       } else {
         document.getElementById(`score--${activePlayer}`).textContent =
           scores[1];
@@ -97,15 +97,15 @@ const btnHoldFunction = function () {
       );
     }
   } else {
-    declareWinner();
+    winner();
   }
 };
 
 const newGame = function () {
-  score0El.textContent = 0;
-  score1El.textContent = 0;
-  currentScore0El.textContent = 0;
-  currentScore1El.textContent = 0;
+  s0.textContent = 0;
+  s1.textContent = 0;
+  cs1.textContent = 0;
+  cs2.textContent = 0;
   diceClassEl.classList.add("hidden");
   document.querySelector(".player--0").classList.add("player--active");
   document.querySelector(".player--1").classList.remove("player--active");
@@ -114,8 +114,8 @@ const newGame = function () {
     .classList.remove("player--winner", "name");
 };
 //setting default values to 0
-score0El.textContent = 0;
-score1El.textContent = 0;
+s0.textContent = 0;
+s1.textContent = 0;
 diceClassEl.classList.add("hidden");
 
 btnRoll.addEventListener("click", rollDice);
